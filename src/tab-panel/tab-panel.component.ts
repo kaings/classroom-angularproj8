@@ -1,13 +1,14 @@
-import {AfterContentInit, Component, ContentChildren, QueryList} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, ContentChildren, Input, QueryList, TemplateRef} from '@angular/core';
 import {TabComponent} from '../tab-content/tab.component';
 
 @Component({
   selector: 'tab-panel',
   templateUrl: './tab-panel.component.html'
 })
-export class TabPanelComponent implements AfterContentInit {
+export class TabPanelComponent implements AfterContentInit, AfterViewInit {
   @ContentChildren(TabComponent) tabComponents: QueryList<TabComponent>;
   tabs: TabComponent[];
+  @Input() tabPanelType: TemplateRef<any>;
 
   ngAfterContentInit() {
     this.tabs = this.tabComponents.toArray();
@@ -26,5 +27,9 @@ export class TabPanelComponent implements AfterContentInit {
     return {
       tabPanelObjProp: this.tabs
     };
+  }
+
+  ngAfterViewInit() {
+    console.log('tabPanelType..... ', this.tabPanelType); // this won't have any nodes because ng-template won't be rendered
   }
 }

@@ -8,7 +8,7 @@
   </ul>
 </ng-template>
 
-<ng-container *ngTemplateOutlet="defaultTabPanel; context: tabPanelObj">
+<ng-container *ngTemplateOutlet="tabPanelType? tabPanelType : defaultTabPanel; context: tabPanelObj">
 </ng-container>
 
 <ng-content></ng-content>
