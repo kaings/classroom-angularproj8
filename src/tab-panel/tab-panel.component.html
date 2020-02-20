@@ -1,5 +1,5 @@
 <ng-template #defaultTabPanel let-tabArr="tabPanelObjProp">
-  <ul class="tab-panel list-inline d-flex" *ngIf="tabArr">
+  <ul class="tab-panel list-inline d-flex my-0" *ngIf="tabArr">
     <li class="list-inline-item rounded-top border border-success px-2 mx-2"
         *ngFor="let tab of tabArr" [ngStyle]="{'background-color': tab.selected? '#ff6c00': '#ffc82e'}"
         (click)="selectTab(tab)">
