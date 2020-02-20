@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Source Code Pro', monospace;
+}
+
+.tab-content {
+  background-color: #39ffaf;
+}
+
+.tab-panel {
+  background-color: #ffc82e;
+}
+
+.tab-panel-item {
+  background-color: lightgrey;
+}
+
+.list-inline-item {
+  cursor: pointer;
+}

@@ -1,0 +1,8 @@
+<ul class="tab-panel list-inline d-flex" *ngIf="tabs">
+  <li class="list-inline-item rounded-top border border-success px-2 mx-2"
+      *ngFor="let tab of tabs" [ngStyle]="{'background-color': tab.selected? '#ff6c00': '#ffc82e'}"
+      (click)="selectTab(tab)">
+    {{tab.title}}
+  </li>
+</ul>
+<ng-content></ng-content>
