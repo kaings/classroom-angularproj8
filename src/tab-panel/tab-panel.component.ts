@@ -21,4 +21,10 @@ export class TabPanelComponent implements AfterContentInit {
     this.tabs.map((tab: TabComponent) => tab.selected = false);
     tabComponent.selected = true;
   }
+
+  get tabPanelObj() {
+    return {
+      tabPanelObjProp: this.tabs
+    };
+  }
 }
