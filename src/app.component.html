@@ -8,23 +8,23 @@
   </div>
 
   <ng-template class="d-flex" #customTabPanel>
-    <button class="mx-2 px-2">Home</button>
-    <button class="mx-2 px-2">Strategy</button>
-    <button class="mx-2 px-2">Members</button>
+    <button class="mx-2 px-2" (click)="tabPanel.selectTab(homeTab)">Home</button>
+    <button class="mx-2 px-2" (click)="tabPanel.selectTab(strategyTab)">Strategy</button>
+    <button class="mx-2 px-2" (click)="tabPanel.selectTab(membersTab)">Members</button>
   </ng-template>
 
-  <tab-panel [tabPanelType]="!default? customTabPanel : null">
-    <tab title="Home">
+  <tab-panel [tabPanelType]="!default? customTabPanel : null" #tabPanel>
+    <tab title="Home" #homeTab>
       <div>
         Content of Home
       </div>
     </tab>
-    <tab title="Strategy">
+    <tab title="Strategy" #strategyTab>
       <div>
         Content of strategy
       </div>
     </tab>
-    <tab title="Members">
+    <tab title="Members" #membersTab>
       <div>
         Content of people who joined
       </div>
