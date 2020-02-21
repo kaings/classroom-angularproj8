@@ -38,7 +38,14 @@
 
     <!-- passing custom template to ngFor -->
     <div class="col-6">
-      <skill-list [skills]="skills"></skill-list>
+      <skill-list [skills]="skills">
+        <ng-template let-codingSkill> <!-- this is custom template for ngFor -->
+          <div class="d-flex flex-column m-2">
+            <img class="mx-2 icon" [src]="codingSkill.icon" alt="skill icon">
+            <span class="">{{codingSkill.name}}</span>
+          </div>
+        </ng-template>
+      </skill-list>
     </div>
   </div>
 
