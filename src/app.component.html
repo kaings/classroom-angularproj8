@@ -1,33 +1,45 @@
 <div class="m-5">
   <h2 class="text-center">Main Site</h2>
-  <div>
-    <a class="btn btn-warning my-4 mx-2" [ngStyle]="{'background-color': !default ? 'lightgrey' : '#ffc82e'}"
-       (click)="switchTabPanelType()">
-      Switch TabPanelType
-    </a>
+  <div class="col-12 d-flex">
+
+    <!-- render template dynamically using NgTemplateOutlet -->
+    <div class="col-6">
+      <div>
+        <a class="btn btn-warning my-4 mx-2" [ngStyle]="{'background-color': !default ? 'lightgrey' : '#ffc82e'}"
+           (click)="switchTabPanelType()">
+          Switch TabPanelType
+        </a>
+      </div>
+
+      <ng-template class="d-flex" #customTabPanel>
+        <button class="mx-2 px-2" (click)="tabPanel.selectTab(homeTab)">Home</button>
+        <button class="mx-2 px-2" (click)="tabPanel.selectTab(strategyTab)">Strategy</button>
+        <button class="mx-2 px-2" (click)="tabPanel.selectTab(membersTab)">Members</button>
+      </ng-template>
+
+      <tab-panel [tabPanelType]="!default? customTabPanel : null" #tabPanel>
+        <tab title="Home" #homeTab>
+          <div>
+            Content of Home
+          </div>
+        </tab>
+        <tab title="Strategy" #strategyTab>
+          <div>
+            Content of strategy
+          </div>
+        </tab>
+        <tab title="Members" #membersTab>
+          <div>
+            Content of people who joined
+          </div>
+        </tab>
+      </tab-panel>
+    </div>
+
+    <!-- passing custom template to ngFor -->
+    <div class="col-6">
+      <skill-list [skills]="skills"></skill-list>
+    </div>
   </div>
 
-  <ng-template class="d-flex" #customTabPanel>
-    <button class="mx-2 px-2" (click)="tabPanel.selectTab(homeTab)">Home</button>
-    <button class="mx-2 px-2" (click)="tabPanel.selectTab(strategyTab)">Strategy</button>
-    <button class="mx-2 px-2" (click)="tabPanel.selectTab(membersTab)">Members</button>
-  </ng-template>
-
-  <tab-panel [tabPanelType]="!default? customTabPanel : null" #tabPanel>
-    <tab title="Home" #homeTab>
-      <div>
-        Content of Home
-      </div>
-    </tab>
-    <tab title="Strategy" #strategyTab>
-      <div>
-        Content of strategy
-      </div>
-    </tab>
-    <tab title="Members" #membersTab>
-      <div>
-        Content of people who joined
-      </div>
-    </tab>
-  </tab-panel>
 </div>
