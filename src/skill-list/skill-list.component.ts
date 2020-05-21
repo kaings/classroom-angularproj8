@@ -1,4 +1,4 @@
-import {Component, ContentChild, Input, TemplateRef} from '@angular/core';
+import {Component, ContentChild, Input, TemplateRef, AfterContentInit, OnInit} from '@angular/core';
 import {NgForOfContext} from '@angular/common';
 
 @Component({
@@ -13,7 +13,15 @@ import {NgForOfContext} from '@angular/common';
     </ng-template>
   `
 })
-export class SkillListComponent {
+export class SkillListComponent implements AfterContentInit, OnInit {
   @Input() skills: {[key: string]: string}[];
   @ContentChild(TemplateRef) customSkillListTemplate: TemplateRef<NgForOfContext<any>>;
+
+  ngAfterContentInit() {
+    console.log('ngAfterContentInit..... ', this.customSkillListTemplate);
+  }
+
+  ngOnInit() {
+    console.log('ngOnInit..... ', this.customSkillListTemplate);
+  }
 }
